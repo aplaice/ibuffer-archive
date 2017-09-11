@@ -1,4 +1,15 @@
+;;; ibuffer-archive.el --- ibuffer filter groups based on containing archive
+
+;; Version: 0
+;; URL: https://github.com/aplaice/ibuffer-archive
+
 ;; GPLv3+
+
+;;; Commentary:
+
+;; See README.org for suggestions regarding installation and use.
+
+;;; Code:
 
 (require 'ibuffer)
 (require 'ibuf-ext)
@@ -66,3 +77,5 @@ the current buffers."
 
 
 (provide 'ibuffer-archive)
+
+;;; ibuffer-archive.el ends here
