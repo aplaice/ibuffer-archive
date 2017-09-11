@@ -7,7 +7,7 @@
 
 (define-ibuffer-filter archive-root
     "Limit current view to buffers corresponding to files within
-a specific archive (zip, tar etc.) QUALIFIER"
+the specific archive (zip, tar etc.) QUALIFIER"
   (:description "archive file"
 		:reader
 		(read-from-minibuffer
