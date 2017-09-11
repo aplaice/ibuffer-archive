@@ -1,4 +1,4 @@
-;;; ibuffer-archive.el --- ibuffer filter groups based on containing archive
+;;; ibuffer-archive.el --- Ibuffer filter groups based on containing archive
 
 ;; Version: 0
 ;; URL: https://github.com/aplaice/ibuffer-archive

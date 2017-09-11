@@ -1,4 +1,4 @@
-* ibuffer-archive 
+* Ibuffer-archive
 
 An enhancement of ibuffer, to create filter groups based on the archive (e.g. zip or tar) to which a buffer belongs. 
 
