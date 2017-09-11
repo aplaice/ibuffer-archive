@@ -3,7 +3,7 @@
 ;; Version: 0
 ;; URL: https://github.com/aplaice/ibuffer-archive
 
-;; GPLv3+
+;; License: GNU General Public License version 3 or any later version
 
 ;;; Commentary:
 
