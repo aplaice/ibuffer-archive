@@ -17,8 +17,7 @@
 (require 'tar-mode)
 
 (define-ibuffer-filter archive-root
-    "Limit current view to buffers corresponding to files within
-the specific archive (zip, tar etc.) QUALIFIER"
+    "Limit current view to buffers within archive QUALIFIER."
   (:description "archive file"
 		:reader
 		(read-from-minibuffer
@@ -29,9 +28,11 @@ the specific archive (zip, tar etc.) QUALIFIER"
 
 
 (defun ibuffer-archive-root (buf)
-  "Return a cons cell (archive-type . archive-file-name), for the
-_topmost_ archive, to which BUF belongs. If the file is not part
-of an archive, return nil. Tarballs are considered archives."
+  "Return a cons cell (archive-type . archive-file-name), for BUF.
+
+This is for the _topmost_ archive, to which BUF belongs.  If the
+file is not part of an archive, return nil.  Tarballs are
+considered archives."
   (with-current-buffer buf
     (cond
      (archive-subfile-mode
@@ -55,8 +56,10 @@ of an archive, return nil. Tarballs are considered archives."
 
 ;;;###autoload
 (defun ibuffer-archive-generate-filter-groups-by-archive-root ()
-  "Generate filter groups based on the archives corresponding to
-the current buffers."
+  "Generate archive filter groups for current buffers.
+
+These will be based on the topmost archives that the buffers
+belong to."
   (let (filter-groups)
     (dolist (buffer (buffer-list) filter-groups)
       (let ((filter-spec (ibuffer-archive-root buffer)))
