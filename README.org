@@ -1,0 +1,39 @@
+* ibuffer-archive 
+
+An enhancement of ibuffer, to create filter groups based on the archive (e.g. zip or tar) to which a buffer belongs. 
+
+If you love ibuffer (who doesn't?) and frequently deal with zip-based formats, such as XPIs (for firefox extensions) or epubs (for e-books), this might be for you.
+
+ibuffer-archive is inspired by and closely based on [[https://github.com/purcell/ibuffer-vc][ibuffer-vc]].
+
+** Installation and example use
+
+Download `ibuffer-archive.el` and add the following to your `init.el` (or just evaluate it in a `*scratch*` buffer for testing):
+
+#+BEGIN_SRC elisp
+;; Installation
+(add-to-list 'load-path
+	     "/path/to/dir/containing/ibuffer-archive/")
+
+(require 'ibuffer-archive)
+
+
+;; Example use
+(defun set-my-default-ibuffer-filter-groups ()
+  "Set my default ibuffer-filter-groups."
+  (interactive)
+  (setq
+   ibuffer-filter-groups
+   (append
+    ;; Whatever other filter groups you might want to use
+    ;; They can be pre-set or also generated
+    (ibuffer-archive-generate-filter-groups-by-archive-root)))
+  (ibuffer-update nil t))
+
+(add-hook 'ibuffer-hook
+	  #'set-my-default-ibuffer-filter-groups)
+#+END_SRC
+
+** Screenshot
+
+ [[file:ibuffer-archive_screenshot_2017-09-11.png]]
