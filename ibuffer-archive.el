@@ -79,6 +79,22 @@ belong to."
 			(cons filter-group filter-groups)))))))))
 
 
+;; Taken verbatim from:
+;; https://github.com/purcell/ibuffer-vc/blob/master/ibuffer-vc.el
+
+;;;###autoload
+(defun ibuffer-archive-set-filter-groups-by-archive-root ()
+  "Set the current filter groups to filter by archive root."
+  (interactive)
+  (setq ibuffer-filter-groups (ibuffer-archive-generate-filter-groups-by-archive-root))
+  (message "ibuffer-archive: groups set")
+  (let ((ibuf (get-buffer "*Ibuffer*")))
+    (when ibuf
+        (with-current-buffer ibuf
+          (pop-to-buffer ibuf)
+	  (ibuffer-update nil t)))))
+
+
 (provide 'ibuffer-archive)
 
 ;;; ibuffer-archive.el ends here
