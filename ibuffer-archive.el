@@ -36,9 +36,13 @@ considered archives."
   (with-current-buffer buf
     (cond
      (archive-subfile-mode
-      (ibuffer-archive-root archive-superior-buffer))
+      (if (buffer-live-p archive-superior-buffer)
+	  (ibuffer-archive-root archive-superior-buffer)
+	'(Archive . "orphan")))
      (tar-subfile-mode
-      (ibuffer-archive-root tar-superior-buffer))
+      (if (buffer-live-p tar-superior-buffer)
+	  (ibuffer-archive-root tar-superior-buffer)
+	'(Archive . "orphan")))
      ((equal major-mode 'archive-mode)
       (cons archive-subtype
 	    (file-truename buffer-file-name)))
@@ -48,8 +52,7 @@ considered archives."
 
 ;; TODO
 ;; Add checks:
-;; 1. Was the containing archive buffer deleted?
-;; 2. Is the buffer corresponding to an actual buffer or is somebody using the mode incorrectly?
+;; 1. Is the buffer corresponding to an actual buffer or is somebody using the mode incorrectly?
 
 ;; emacs does not seem to deal with 7z files
 ;; ditto for rar files
